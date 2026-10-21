@@ -1,6 +1,6 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
 </head>
+
 <body>
   <header class="cabecalho">
     <div class="marca">
@@ -37,8 +38,26 @@
     </section>
 
     <section id="assuntos">
-      <h2>Assuntos</h2>
-      <p>O menu completo será desenvolvido na tarefa 13.</p>
+      <h2>Explore os assuntos</h2>
+
+      <div class="layout-assuntos">
+        <aside class="sidebar" aria-label="Menu de assuntos">
+          <h3>Conteúdos de Eletroeletrônica</h3>
+          <nav id="menu-assuntos" aria-label="Assuntos disponíveis"></nav>
+        </aside>
+
+        <article class="painel-assuntos">
+          <h3>Biblioteca de conteúdos</h3>
+          <p>
+            Selecione um assunto no menu lateral para
+            consultar seu material educacional.
+          </p>
+          <p>
+            Nosso conteúdo é sobre Relés e Chaves
+            Eletromecânicas (Grupo 04).
+          </p>
+        </article>
+      </div>
     </section>
 
     <section id="sobre">
@@ -52,4 +71,5 @@
     </section>
   </main>
 </body>
+
 </html>

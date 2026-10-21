@@ -8,105 +8,108 @@
     <title>5.4 — Relés e Chaves Eletromecânicas</title>
 
     <style>
-        :root {
-            --azul: #13243d;
-            --amarelo: #f3b735;
-            --texto: #202b3b;
-            --fundo: #f4f7fb;
-        }
+        
+/* Quiz interativo */
 
-        * {
-            box-sizing: border-box;
-        }
+.quiz-container {
+  background: #f5f8fc;
+  border: 1px solid #d9e2ed;
+  border-radius: 14px;
+  padding: 24px;
+}
 
-        body {
-            margin: 0;
-            background: var(--fundo);
-            color: var(--texto);
-            font-family: "Segoe UI", Arial, sans-serif;
-            line-height: 1.7;
-        }
+.quiz-topo {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  color: #526277;
+  font-size: 13px;
+  font-weight: 600;
+}
 
-        .conteudo {
-            max-width: 950px;
-            margin: auto;
-            padding: 25px;
-        }
+.quiz-barra {
+  height: 8px;
+  background: #dfe7f0;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 15px 0 25px;
+}
 
-        .hero {
-            background: var(--azul);
-            color: white;
-            border-radius: 16px;
-            padding: 35px;
-            margin-bottom: 25px;
-        }
+#quiz-barra-progresso {
+  height: 100%;
+  width: 0;
+  background: #f3b735;
+  transition: width 0.3s;
+}
 
-        .hero span {
-            color: var(--amarelo);
-            font-weight: bold;
-            font-size: 13px;
-        }
+#quiz-pergunta {
+  color: #13243d;
+  font-size: 21px;
+}
 
-        .hero h1 {
-            line-height: 1.3;
-            margin: 12px 0;
-        }
+#quiz-alternativas {
+  display: grid;
+  gap: 12px;
+  margin: 22px 0;
+}
 
-        section {
-            background: white;
-            border: 1px solid #d9e2ed;
-            border-radius: 14px;
-            padding: 25px;
-            margin-bottom: 20px;
-        }
+.quiz-alternativa {
+  width: 100%;
+  padding: 15px;
+  text-align: left;
+  color: #202b3b;
+  background: white;
+  border: 1px solid #d9e2ed;
+  border-radius: 9px;
+  cursor: pointer;
+  font: inherit;
+  transition: background 0.2s, border-color 0.2s;
+}
 
-        h2 {
-            color: var(--azul);
-            margin-top: 0;
-        }
+.quiz-alternativa:hover:not(:disabled) {
+  background: #e8f0fa;
+}
 
-        .destaque {
-            background: #fff3d3;
-            border-left: 4px solid var(--amarelo);
-            padding: 15px;
-            border-radius: 6px;
-        }
+.quiz-alternativa.selecionada {
+  border-color: #c18b16;
+  background: #fff0c5;
+}
 
-        .imagem-conteudo {
-            max-width: 100%;
-            border-radius: 10px;
-            display: block;
-            margin: 20px auto;
-        }
+.quiz-alternativa.correta {
+  background: #dff5e6;
+  border-color: #31945b;
+}
 
-        .alternativa {
-            display: block;
-            margin: 12px 0;
-        }
+.quiz-alternativa.incorreta {
+  background: #fde7e7;
+  border-color: #d35454;
+}
 
-        button {
-            background: var(--azul);
-            color: white;
-            padding: 12px 20px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-        }
+.quiz-alternativa:disabled {
+  cursor: default;
+  opacity: 1;
+}
 
-        button:hover {
-            background: #253c59;
-        }
+#quiz-feedback {
+  font-weight: 600;
+  color: #253c59;
+}
 
-        @media (max-width: 600px) {
-            .conteudo {
-                padding: 12px;
-            }
+#quiz-botao:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
 
-            .hero,
-            section {
-                padding: 20px;
-            }
-        }
+@media (max-width: 600px) {
+  .quiz-container {
+    padding: 15px;
+  }
+
+  #quiz-pergunta {
+    font-size: 18px;
+  }
+}
+ 
     </style>
 </head>
 
@@ -216,19 +219,45 @@
                 de comando de máquinas, sistemas
                 de sinalização e intertravamentos.
             </p>
+
+            <h3>Exemplo: controle de uma lâmpada com relé</h3>
+
+            <p>
+                Imagine um sistema em que um circuito de comando
+                de 12 V aciona a bobina de um relé adequado.
+                Quando a bobina é energizada, o contato
+                normalmente aberto (NA) se fecha.
+            </p>
+
+            <p>
+                Esse contato pode controlar outro circuito
+                que alimenta uma lâmpada, desde que a tensão,
+                a corrente e o tipo de carga estejam dentro
+                das especificações do relé.
+            </p>
+
+            <div class="destaque">
+                <strong>Observe:</strong>
+                o circuito de comando e o circuito da lâmpada
+                podem ser eletricamente isolados.
+                A compatibilidade do relé deve ser verificada
+                antes de qualquer montagem.
+            </div>
+
         </section>
 
         <!-- 5. RECURSOS VISUAIS -->
         <section id="recursos-visuais">
             <h2>4. Recursos visuais</h2>
 
-            <p>
-                Nesta seção serão inseridas imagens
-                do relé, seus contatos e diagramas
-                de funcionamento.
-            </p>
-
-            <!-- Inserir imagens gratuitas e seus créditos -->
+            <figure>
+                <img src="imagens/rele-interno.png" alt="Vista interna de um relé eletromecânico"
+                    class="imagem-conteudo">
+                <figcaption>
+                    Estrutura interna de um relé.
+                    Fonte: Chatgpt.
+                </figcaption>
+            </figure>
         </section>
 
         <!-- 6. CURIOSIDADES -->
@@ -270,36 +299,37 @@
 
         <!-- 8. QUIZ -->
         <section id="quiz">
-            <h2>7. Quiz de aprendizagem</h2>
+           
+<section id="quiz">
+  <h2>7. Quiz de aprendizagem</h2>
 
-            <p>
-                Qual componente produz o campo
-                magnético responsável pelo
-                acionamento do relé?
-            </p>
+  <p>
+    Teste seus conhecimentos sobre relés e
+    chaves eletromecânicas.
+  </p>
 
-            <form id="form-quiz">
-                <label class="alternativa">
-                    <input type="radio" name="resposta" value="a">
-                    A) Mola
-                </label>
+  <div class="quiz-container">
+    <div class="quiz-topo">
+      <span id="quiz-progresso">Questão 1 de 5</span>
+      <span id="quiz-pontos">0 pontos</span>
+    </div>
 
-                <label class="alternativa">
-                    <input type="radio" name="resposta" value="b">
-                    B) Bobina
-                </label>
+    <div class="quiz-barra">
+      <div id="quiz-barra-progresso"></div>
+    </div>
 
-                <label class="alternativa">
-                    <input type="radio" name="resposta" value="c">
-                    C) Contato elétrico
-                </label>
+    <h3 id="quiz-pergunta"></h3>
 
-                <button type="submit">
-                    Verificar resposta
-                </button>
-            </form>
+    <div id="quiz-alternativas"></div>
 
-            <p id="resultado-quiz" role="status"></p>
+    <p id="quiz-feedback" role="status" aria-live="polite"></p>
+
+    <button id="quiz-botao" type="button">
+      Verificar resposta
+    </button>
+  </div>
+</section>
+
         </section>
 
         <!-- 9. REFERÊNCIAS -->
@@ -314,30 +344,196 @@
     </main>
 
     <script>
-        const formulario = document.getElementById("form-quiz");
-        const resultado = document.getElementById("resultado-quiz");
+      
+const perguntas = [
+  {
+    pergunta: "Qual componente gera o campo magnético de um relé?",
+    alternativas: [
+      "Bobina eletromagnética",
+      "Mola de retorno",
+      "Contato NA",
+      "Carcaça"
+    ],
+    correta: 0,
+    explicacao: "A bobina produz o campo magnético responsável pelo acionamento."
+  },
+  {
+    pergunta: "O que significa contato NA?",
+    alternativas: [
+      "Não alimentado",
+      "Normalmente aberto",
+      "Núcleo ativo",
+      "Normalmente acionado"
+    ],
+    correta: 1,
+    explicacao: "O contato NA permanece aberto na condição de repouso."
+  },
+  {
+    pergunta: "O que acontece ao energizar a bobina de um relé típico?",
+    alternativas: [
+      "A mola desaparece",
+      "O núcleo derrete",
+      "A armadura se movimenta",
+      "Todos os contatos abrem"
+    ],
+    correta: 2,
+    explicacao: "O campo magnético atrai a armadura, alterando os contatos."
+  },
+  {
+    pergunta: "Qual é uma aplicação comum dos relés?",
+    alternativas: [
+      "Medir temperatura diretamente",
+      "Controlar cargas por um circuito de comando",
+      "Armazenar dados",
+      "Gerar energia elétrica"
+    ],
+    correta: 1,
+    explicacao: "Relés permitem que um circuito de comando acione outro circuito."
+  },
+  {
+    pergunta: "Qual é uma limitação dos relés eletromecânicos?",
+    alternativas: [
+      "Não possuem contatos",
+      "Não utilizam eletromagnetismo",
+      "Possuem partes móveis sujeitas a desgaste",
+      "Funcionam somente com corrente alternada"
+    ],
+    correta: 2,
+    explicacao: "Os contatos e mecanismos podem sofrer desgaste com o uso."
+  }
+];
 
-        formulario.addEventListener("submit", function (evento) {
-            evento.preventDefault();
+let questaoAtual = 0;
+let pontuacao = 0;
+let respostaSelecionada = null;
+let respostaVerificada = false;
 
-            const selecionada = formulario.querySelector(
-                'input[name="resposta"]:checked'
-            );
+const perguntaElemento = document.getElementById("quiz-pergunta");
+const alternativasElemento = document.getElementById("quiz-alternativas");
+const feedbackElemento = document.getElementById("quiz-feedback");
+const botaoQuiz = document.getElementById("quiz-botao");
+const progressoElemento = document.getElementById("quiz-progresso");
+const pontosElemento = document.getElementById("quiz-pontos");
+const barraElemento = document.getElementById("quiz-barra-progresso");
 
-            if (!selecionada) {
-                resultado.textContent =
-                    "Selecione uma alternativa.";
-                return;
-            }
+function mostrarQuestao() {
+  const questao = perguntas[questaoAtual];
 
-            if (selecionada.value === "b") {
-                resultado.textContent =
-                    "Correto! A bobina produz o campo magnético.";
-            } else {
-                resultado.textContent =
-                    "Tente novamente! Pense no eletromagnetismo.";
-            }
-        });
+  respostaSelecionada = null;
+  respostaVerificada = false;
+
+  perguntaElemento.textContent = questao.pergunta;
+  alternativasElemento.replaceChildren();
+  feedbackElemento.textContent = "";
+
+  progressoElemento.textContent =
+    `Questão ${questaoAtual + 1} de ${perguntas.length}`;
+
+  pontosElemento.textContent = `${pontuacao} pontos`;
+
+  barraElemento.style.width =
+    `${((questaoAtual + 1) / perguntas.length) * 100}%`;
+
+  botaoQuiz.textContent = "Verificar resposta";
+  botaoQuiz.disabled = true;
+
+  questao.alternativas.forEach((alternativa, indice) => {
+    const botao = document.createElement("button");
+
+    botao.type = "button";
+    botao.className = "quiz-alternativa";
+    botao.textContent =
+      `${String.fromCharCode(65 + indice)}) ${alternativa}`;
+
+    botao.addEventListener("click", () => {
+      if (respostaVerificada) return;
+
+      respostaSelecionada = indice;
+
+      document.querySelectorAll(".quiz-alternativa")
+        .forEach(elemento => elemento.classList.remove("selecionada"));
+
+      botao.classList.add("selecionada");
+      botaoQuiz.disabled = false;
+    });
+
+    alternativasElemento.appendChild(botao);
+  });
+}
+
+function finalizarQuiz() {
+  perguntaElemento.textContent = "Desafio concluído!";
+  alternativasElemento.replaceChildren();
+
+  progressoElemento.textContent = "Finalizado";
+  pontosElemento.textContent = `${pontuacao} pontos`;
+  barraElemento.style.width = "100%";
+
+  feedbackElemento.textContent =
+    `Você acertou ${pontuacao} de ${perguntas.length} questões. ` +
+    (pontuacao === perguntas.length
+      ? "Excelente desempenho!"
+      : pontuacao >= 3
+        ? "Muito bem! Continue estudando."
+        : "Revise o conteúdo e tente novamente.");
+
+  botaoQuiz.textContent = "Refazer quiz";
+  botaoQuiz.disabled = false;
+}
+
+botaoQuiz.addEventListener("click", () => {
+  if (questaoAtual >= perguntas.length) {
+    questaoAtual = 0;
+    pontuacao = 0;
+    mostrarQuestao();
+    return;
+  }
+
+  if (!respostaVerificada) {
+    if (respostaSelecionada === null) return;
+
+    respostaVerificada = true;
+
+    const questao = perguntas[questaoAtual];
+    const acertou = respostaSelecionada === questao.correta;
+
+    if (acertou) pontuacao++;
+
+    pontosElemento.textContent = `${pontuacao} pontos`;
+
+    feedbackElemento.textContent =
+      (acertou ? "Correto! " : "Incorreto. ") +
+      questao.explicacao;
+
+    const alternativas = document.querySelectorAll(".quiz-alternativa");
+
+    alternativas.forEach((elemento, indice) => {
+      elemento.disabled = true;
+
+      if (indice === questao.correta) {
+        elemento.classList.add("correta");
+      } else if (indice === respostaSelecionada) {
+        elemento.classList.add("incorreta");
+      }
+    });
+
+    botaoQuiz.textContent =
+      questaoAtual === perguntas.length - 1
+        ? "Ver resultado"
+        : "Próxima questão";
+  } else {
+    questaoAtual++;
+
+    if (questaoAtual < perguntas.length) {
+      mostrarQuestao();
+    } else {
+      finalizarQuiz();
+    }
+  }
+});
+
+mostrarQuestao();
+
     </script>
 </body>
 

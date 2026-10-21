@@ -94,7 +94,8 @@ if (menu) {
                     link.classList.add("assunto-nosso");
                 }
 
-                link.addEventListener("click", async (evento) => {
+
+                link.addEventListener("click", (evento) => {
                     evento.preventDefault();
 
                     const titulo = document.getElementById("titulo-conteudo");
@@ -103,34 +104,24 @@ if (menu) {
 
                     if (!titulo || !descricao || !area) return;
 
+                    // Atualiza o título e a descrição
                     titulo.textContent = assunto;
                     descricao.textContent = `Assunto ${codigo}`;
 
+                    // Limpa o conteúdo anterior
                     area.replaceChildren();
 
-                    try {
-                        const resposta = await fetch(link.href, { method: "HEAD" });
+                    // Carrega diretamente o arquivo HTML local
+                    const iframe = document.createElement("iframe");
 
-                        if (!resposta.ok) {
-                            throw new Error("Conteúdo indisponível");
-                        }
+                    iframe.src = link.getAttribute("href");
+                    iframe.title = assunto;
+                    iframe.className = "iframe-conteudo";
+                    iframe.loading = "eager";
 
-                        const iframe = document.createElement("iframe");
-                        iframe.src = link.href;
-                        iframe.title = assunto;
-                        iframe.className = "iframe-conteudo";
-                        iframe.loading = "lazy";
-
-                        area.appendChild(iframe);
-                    } catch (erro) {
-                        const aviso = document.createElement("p");
-                        aviso.className = "aviso-indisponivel";
-                        aviso.textContent =
-                            "Este conteúdo ainda não foi disponibilizado pelo grupo.";
-
-                        area.appendChild(aviso);
-                    }
+                    area.appendChild(iframe);
                 });
+
 
                 item.appendChild(link);
             } else {
@@ -156,60 +147,60 @@ const campoPesquisa = document.getElementById("pesquisa-assuntos");
 const resultadoPesquisa = document.getElementById("resultado-pesquisa");
 
 function normalizarTexto(texto) {
-  return texto
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .toLowerCase()
-    .trim();
+    return texto
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .toLowerCase()
+        .trim();
 }
 
 function pesquisarAssuntos() {
-  if (!campoPesquisa || !menu || !resultadoPesquisa) return;
+    if (!campoPesquisa || !menu || !resultadoPesquisa) return;
 
-  const termo = normalizarTexto(campoPesquisa.value);
-  const grupos = menu.querySelectorAll(".grupo-menu");
+    const termo = normalizarTexto(campoPesquisa.value);
+    const grupos = menu.querySelectorAll(".grupo-menu");
 
-  let quantidadeResultados = 0;
+    let quantidadeResultados = 0;
 
-  grupos.forEach((grupo) => {
-    const itens = grupo.querySelectorAll("li");
-    let resultadosNoGrupo = 0;
+    grupos.forEach((grupo) => {
+        const itens = grupo.querySelectorAll("li");
+        let resultadosNoGrupo = 0;
 
-    itens.forEach((item) => {
-      const texto = normalizarTexto(item.textContent);
-      const corresponde = texto.includes(termo);
+        itens.forEach((item) => {
+            const texto = normalizarTexto(item.textContent);
+            const corresponde = texto.includes(termo);
 
-      item.hidden = !corresponde;
+            item.hidden = !corresponde;
 
-      if (corresponde) {
-        resultadosNoGrupo++;
-        quantidadeResultados++;
-      }
+            if (corresponde) {
+                resultadosNoGrupo++;
+                quantidadeResultados++;
+            }
+        });
+
+        if (termo) {
+            grupo.hidden = resultadosNoGrupo === 0;
+
+            if (resultadosNoGrupo > 0) {
+                grupo.open = true;
+            }
+        } else {
+            grupo.hidden = false;
+        }
     });
 
-    if (termo) {
-      grupo.hidden = resultadosNoGrupo === 0;
-
-      if (resultadosNoGrupo > 0) {
-        grupo.open = true;
-      }
+    if (!termo) {
+        resultadoPesquisa.textContent =
+            "Explore os 20 assuntos disponíveis.";
+    } else if (quantidadeResultados === 0) {
+        resultadoPesquisa.textContent =
+            "Nenhum assunto encontrado.";
     } else {
-      grupo.hidden = false;
+        resultadoPesquisa.textContent =
+            `${quantidadeResultados} assunto(s) encontrado(s).`;
     }
-  });
-
-  if (!termo) {
-    resultadoPesquisa.textContent =
-      "Explore os 20 assuntos disponíveis.";
-  } else if (quantidadeResultados === 0) {
-    resultadoPesquisa.textContent =
-      "Nenhum assunto encontrado.";
-  } else {
-    resultadoPesquisa.textContent =
-      `${quantidadeResultados} assunto(s) encontrado(s).`;
-  }
 }
 
 if (campoPesquisa) {
-  campoPesquisa.addEventListener("input", pesquisarAssuntos);
+    campoPesquisa.addEventListener("input", pesquisarAssuntos);
 }

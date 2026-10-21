@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>5.4 — Relés e Chaves Eletromecânicas</title>
+
+    <style>
+        :root {
+            --azul: #13243d;
+            --amarelo: #f3b735;
+            --texto: #202b3b;
+            --fundo: #f4f7fb;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: var(--fundo);
+            color: var(--texto);
+            font-family: "Segoe UI", Arial, sans-serif;
+            line-height: 1.7;
+        }
+
+        .conteudo {
+            max-width: 950px;
+            margin: auto;
+            padding: 25px;
+        }
+
+        .hero {
+            background: var(--azul);
+            color: white;
+            border-radius: 16px;
+            padding: 35px;
+            margin-bottom: 25px;
+        }
+
+        .hero span {
+            color: var(--amarelo);
+            font-weight: bold;
+            font-size: 13px;
+        }
+
+        .hero h1 {
+            line-height: 1.3;
+            margin: 12px 0;
+        }
+
+        section {
+            background: white;
+            border: 1px solid #d9e2ed;
+            border-radius: 14px;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: var(--azul);
+            margin-top: 0;
+        }
+
+        .destaque {
+            background: #fff3d3;
+            border-left: 4px solid var(--amarelo);
+            padding: 15px;
+            border-radius: 6px;
+        }
+
+        .imagem-conteudo {
+            max-width: 100%;
+            border-radius: 10px;
+            display: block;
+            margin: 20px auto;
+        }
+
+        .alternativa {
+            display: block;
+            margin: 12px 0;
+        }
+
+        button {
+            background: var(--azul);
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #253c59;
+        }
+
+        @media (max-width: 600px) {
+            .conteudo {
+                padding: 12px;
+            }
+
+            .hero,
+            section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main class="conteudo">
+
+        <!-- 1. TÍTULO -->
+        <header class="hero">
+            <span>GRUPO 04 • ASSUNTO 5.4</span>
+            <h1>Relés e Chaves Eletromecânicas</h1>
+            <p>
+                Conheça os dispositivos que permitem
+                controlar circuitos elétricos por meio
+                de contatos mecânicos.
+            </p>
+        </header>
+
+        <!-- 2. INTRODUÇÃO -->
+        <section id="introducao">
+            <h2>1. Introdução</h2>
+
+            <p>
+                Imagine que você precise acionar uma
+                lâmpada ou um motor utilizando um
+                circuito de comando separado.
+            </p>
+
+            <p>
+                Os relés eletromecânicos permitem
+                realizar esse controle por meio do
+                acionamento de contatos elétricos.
+            </p>
+        </section>
+
+        <!-- 3. CONTEÚDO TÉCNICO -->
+        <section id="conteudo-tecnico">
+            <h2>2. Conteúdo técnico</h2>
+
+            <h3>O que é um relé eletromecânico?</h3>
+
+            <p>
+                É um dispositivo que utiliza uma
+                bobina eletromagnética para movimentar
+                contatos elétricos.
+            </p>
+
+            <h3>Principais componentes</h3>
+
+            <ul>
+                <li>Bobina eletromagnética</li>
+                <li>Núcleo magnético</li>
+                <li>Armadura móvel</li>
+                <li>Mola de retorno</li>
+                <li>Contatos elétricos</li>
+            </ul>
+
+            <h3>Tipos de contatos</h3>
+
+            <p>
+                <strong>NA:</strong> normalmente aberto.
+                Permanece aberto na condição de repouso.
+            </p>
+
+            <p>
+                <strong>NF:</strong> normalmente fechado.
+                Permanece fechado na condição de repouso.
+            </p>
+
+            <p>
+                <strong>COM:</strong> terminal comum
+                utilizado em contatos comutadores.
+            </p>
+
+            <h3>Chaves eletromecânicas</h3>
+
+            <p>
+                São dispositivos que estabelecem,
+                interrompem ou alteram conexões
+                elétricas por meio de mecanismos
+                e contatos físicos.
+            </p>
+
+            <div class="destaque">
+                Um relé pode oferecer isolamento
+                galvânico entre comando e carga,
+                dependendo de sua construção.
+            </div>
+        </section>
+
+        <!-- 4. EXEMPLOS PRÁTICOS -->
+        <section id="exemplos">
+            <h2>3. Exemplos práticos</h2>
+
+            <h3>Acionamento de uma lâmpada</h3>
+
+            <p>
+                Um circuito de comando energiza
+                a bobina do relé. O contato NA
+                fecha e permite a alimentação
+                da lâmpada por outro circuito.
+            </p>
+
+            <h3>Automação industrial</h3>
+
+            <p>
+                Relés podem participar de circuitos
+                de comando de máquinas, sistemas
+                de sinalização e intertravamentos.
+            </p>
+        </section>
+
+        <!-- 5. RECURSOS VISUAIS -->
+        <section id="recursos-visuais">
+            <h2>4. Recursos visuais</h2>
+
+            <p>
+                Nesta seção serão inseridas imagens
+                do relé, seus contatos e diagramas
+                de funcionamento.
+            </p>
+
+            <!-- Inserir imagens gratuitas e seus créditos -->
+        </section>
+
+        <!-- 6. CURIOSIDADES -->
+        <section id="curiosidades">
+            <h2>5. Curiosidades e aplicações</h2>
+
+            <p>
+                Relés são encontrados em automóveis,
+                painéis de comando, sistemas de
+                automação e equipamentos elétricos.
+            </p>
+
+            <p>
+                Apesar de sua utilidade, os relés
+                eletromecânicos possuem partes móveis
+                sujeitas a desgaste.
+            </p>
+        </section>
+
+        <!-- 7. RESUMO -->
+        <section id="resumo">
+            <h2>6. Resumo para o caderno</h2>
+
+            <p>
+                Relés eletromecânicos utilizam o
+                eletromagnetismo para acionar contatos
+                elétricos. Seus principais componentes
+                são bobina, núcleo, armadura, mola e
+                contatos. Os contatos podem ser
+                normalmente abertos ou fechados.
+            </p>
+
+            <p>
+                Chaves eletromecânicas realizam
+                operações de conexão e desconexão
+                de circuitos por ação mecânica.
+            </p>
+        </section>
+
+        <!-- 8. QUIZ -->
+        <section id="quiz">
+            <h2>7. Quiz de aprendizagem</h2>
+
+            <p>
+                Qual componente produz o campo
+                magnético responsável pelo
+                acionamento do relé?
+            </p>
+
+            <form id="form-quiz">
+                <label class="alternativa">
+                    <input type="radio" name="resposta" value="a">
+                    A) Mola
+                </label>
+
+                <label class="alternativa">
+                    <input type="radio" name="resposta" value="b">
+                    B) Bobina
+                </label>
+
+                <label class="alternativa">
+                    <input type="radio" name="resposta" value="c">
+                    C) Contato elétrico
+                </label>
+
+                <button type="submit">
+                    Verificar resposta
+                </button>
+            </form>
+
+            <p id="resultado-quiz" role="status"></p>
+        </section>
+
+        <!-- 9. REFERÊNCIAS -->
+        <section id="referencias">
+            <h2>8. Referências</h2>
+
+            <p>
+                https://www.mundodaeletrica.com.br/o-que-e-rele-como-funciona-um-rele/
+            </p>
+        </section>
+
+    </main>
+
+    <script>
+        const formulario = document.getElementById("form-quiz");
+        const resultado = document.getElementById("resultado-quiz");
+
+        formulario.addEventListener("submit", function (evento) {
+            evento.preventDefault();
+
+            const selecionada = formulario.querySelector(
+                'input[name="resposta"]:checked'
+            );
+
+            if (!selecionada) {
+                resultado.textContent =
+                    "Selecione uma alternativa.";
+                return;
+            }
+
+            if (selecionada.value === "b") {
+                resultado.textContent =
+                    "Correto! A bobina produz o campo magnético.";
+            } else {
+                resultado.textContent =
+                    "Tente novamente! Pense no eletromagnetismo.";
+            }
+        });
+    </script>
+</body>
+
+</html>

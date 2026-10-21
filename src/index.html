@@ -41,10 +41,30 @@
       <h2>Explore os assuntos</h2>
 
       <div class="layout-assuntos">
+
         <aside class="sidebar" aria-label="Menu de assuntos">
           <h3>Conteúdos de Eletroeletrônica</h3>
+
+          <div class="pesquisa-container">
+            <label for="pesquisa-assuntos">
+              Pesquisar conteúdo
+            </label>
+
+            <div class="pesquisa-campo">
+              <span aria-hidden="true">🔎</span>
+
+              <input type="search" id="pesquisa-assuntos" placeholder="Ex.: relés, multímetro..." autocomplete="off"
+                aria-controls="menu-assuntos">
+            </div>
+
+            <p id="resultado-pesquisa" role="status" aria-live="polite">
+              Explore os 20 assuntos disponíveis.
+            </p>
+          </div>
+
           <nav id="menu-assuntos" aria-label="Assuntos disponíveis"></nav>
         </aside>
+
 
 
         <article class="painel-assuntos">
@@ -126,7 +146,7 @@
       <p>© 2026 BermanuelVolts. Projeto educacional.</p>
     </div>
   </footer>
-  
+
 </body>
 
 </html>

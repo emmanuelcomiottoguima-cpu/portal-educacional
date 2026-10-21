@@ -46,8 +46,7 @@ const categorias = [
     }
 ];
 
-// Mapeamento dos grupos confirmados no sorteio do professor.
-// Os arquivos serão adicionados quando estiverem disponíveis.
+
 const arquivosPorAssunto = {
     "1.1": "grupo-07.html",
     "2.4": "grupo-06.html",
@@ -58,7 +57,7 @@ const arquivosPorAssunto = {
     "5.4": "grupo-04.html"
 };
 
-// Caminho relativo ao index.html dentro de src/
+
 const pastaConteudos = "conteudos/";
 
 const menu = document.getElementById("menu-assuntos");
@@ -149,4 +148,68 @@ if (menu) {
         grupo.appendChild(lista);
         menu.appendChild(grupo);
     });
+}
+
+
+
+const campoPesquisa = document.getElementById("pesquisa-assuntos");
+const resultadoPesquisa = document.getElementById("resultado-pesquisa");
+
+function normalizarTexto(texto) {
+  return texto
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .trim();
+}
+
+function pesquisarAssuntos() {
+  if (!campoPesquisa || !menu || !resultadoPesquisa) return;
+
+  const termo = normalizarTexto(campoPesquisa.value);
+  const grupos = menu.querySelectorAll(".grupo-menu");
+
+  let quantidadeResultados = 0;
+
+  grupos.forEach((grupo) => {
+    const itens = grupo.querySelectorAll("li");
+    let resultadosNoGrupo = 0;
+
+    itens.forEach((item) => {
+      const texto = normalizarTexto(item.textContent);
+      const corresponde = texto.includes(termo);
+
+      item.hidden = !corresponde;
+
+      if (corresponde) {
+        resultadosNoGrupo++;
+        quantidadeResultados++;
+      }
+    });
+
+    if (termo) {
+      grupo.hidden = resultadosNoGrupo === 0;
+
+      if (resultadosNoGrupo > 0) {
+        grupo.open = true;
+      }
+    } else {
+      grupo.hidden = false;
+    }
+  });
+
+  if (!termo) {
+    resultadoPesquisa.textContent =
+      "Explore os 20 assuntos disponíveis.";
+  } else if (quantidadeResultados === 0) {
+    resultadoPesquisa.textContent =
+      "Nenhum assunto encontrado.";
+  } else {
+    resultadoPesquisa.textContent =
+      `${quantidadeResultados} assunto(s) encontrado(s).`;
+  }
+}
+
+if (campoPesquisa) {
+  campoPesquisa.addEventListener("input", pesquisarAssuntos);
 }

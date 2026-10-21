@@ -394,3 +394,98 @@ main section {
 .grupo-menu li[hidden] {
   display: none !important;
 }
+
+/* ======================================
+   TAREFA 20 — AJUSTES RESPONSIVOS
+   ====================================== */
+
+html,
+body {
+  max-width: 100%;
+}
+
+img,
+video,
+svg {
+  max-width: 100%;
+  height: auto;
+}
+
+.layout-assuntos,
+.painel-assuntos,
+.sidebar {
+  min-width: 0;
+}
+
+.painel-assuntos,
+.area-conteudo {
+  overflow-wrap: anywhere;
+}
+
+.iframe-conteudo {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  border: 1px solid #d9e2ed;
+}
+
+@media (max-width: 800px) {
+  .layout-assuntos {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .sidebar,
+  .painel-assuntos {
+    width: 100%;
+  }
+
+  .navegacao {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .rodape-conteudo {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 420px) {
+  .cabecalho {
+    padding: 16px 12px;
+  }
+
+  .marca {
+    gap: 10px;
+  }
+
+  .marca h1 {
+    font-size: 20px;
+    overflow-wrap: anywhere;
+  }
+
+  .navegacao a {
+    flex: 1 1 calc(50% - 8px);
+    font-size: 12px;
+  }
+
+  main {
+    padding: 0 10px;
+  }
+
+  main section {
+    padding: 16px;
+  }
+
+  .sidebar {
+    padding: 12px;
+  }
+
+  .painel-assuntos {
+    padding: 12px;
+  }
+
+  .iframe-conteudo {
+    height: 600px;
+  }
+}

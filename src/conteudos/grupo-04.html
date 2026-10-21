@@ -110,6 +110,50 @@
   }
 }
  
+/* Responsividade da página individual */
+
+img,
+video,
+svg {
+  max-width: 100%;
+  height: auto;
+}
+
+.conteudo {
+  width: 100%;
+  min-width: 0;
+}
+
+section,
+.hero {
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 600px) {
+  .conteudo {
+    padding: 10px;
+  }
+
+  .hero,
+  section {
+    padding: 18px;
+    border-radius: 10px;
+  }
+
+  .hero h1 {
+    font-size: 24px;
+  }
+
+  .quiz-container {
+    padding: 14px;
+  }
+
+  .quiz-alternativa {
+    padding: 13px;
+    font-size: 14px;
+  }
+}
+
     </style>
 </head>
 
